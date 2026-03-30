@@ -42,3 +42,34 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Angular build output
+/dist
+/tmp
+/out-tsc
+
+# Node modules
+/node_modules
+
+# Compiled JavaScript
+/*.js
+/*.js.map
+/*.jsbundle
+
+# Compiled CSS
+/*.css
+/*.css.map
+
+# Environment files (if you want to keep API keys secret)
+src/environments/environment*.ts
+
+# IDEs and editors
+/.vscode/
+/.idea/
+/*.sublime-project
+/*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
