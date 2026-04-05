@@ -1,0 +1,25 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
+
+    <h2>Create Account</h2>
+  
+    <input type="text" placeholder="Username" formControlName="username" />
+  
+    <input type="text" placeholder="Phone Number" formControlName="phone" />
+  
+    <input type="email" placeholder="Email" formControlName="email" />
+  
+    <select formControlName="role">
+      <option value="Travel">Travel</option>
+      <option value="Passenger" disabled>Passenger</option>
+      <option value="Driver" disabled>Driver</option>
+    </select>
+  
+    <button type="submit">Create Account</button>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <p>
+      Already registered?
+      <a routerLink="/login">Click here to login</a>
+    </p>
+  
+  </form>
