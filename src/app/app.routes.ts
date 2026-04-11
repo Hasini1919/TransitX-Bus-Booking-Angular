@@ -1,11 +1,30 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './features/auth/register/register.component';
-//import { OtpComponent } from './features/auth/otp/otp.component';
-//import { LoginComponent } from './features/auth/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/register', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
- // { path: 'otp', component: OtpComponent },
- // { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login.component').then(m => m.LoginComponent)
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./features/auth/register/register.component').then(m => m.RegisterComponent)
+  },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./pages/home/home.component').then(m => m.HomeComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
+  }
 ];

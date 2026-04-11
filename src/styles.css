@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+/* ── CSS Variables ───────────────────────────────────── */
+:root {
+  --orange-600: #FF6B00;
+  --orange-500: #FF8500;
+  --orange-400: #FF9500;
+  --orange-100: #fff0e0;
+  --orange-50:  #fffaf7;
+
+  --brown-900: #1a0a00;
+  --brown-700: #5a3a20;
+  --brown-400: #9a7a60;
+  --brown-200: #e8ddd4;
+
+  --white: #ffffff;
+  --error: #ef4444;
+  --success: #22c55e;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  --shadow-orange: 0 8px 24px rgba(255, 107, 0, 0.35);
+  --shadow-card:   0 4px 16px rgba(26, 10, 0, 0.08);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--orange-50);
+  color: var(--brown-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--orange-50); }
+::-webkit-scrollbar-thumb { background: var(--orange-400); border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(255, 107, 0, 0.2); }
+
+/* Focus visible */
+:focus-visible { outline: 2px solid var(--orange-600); outline-offset: 2px; }
