@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/transitx-bus-booking/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
