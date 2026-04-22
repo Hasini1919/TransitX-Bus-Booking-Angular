@@ -36,8 +36,11 @@ export class OtpModalComponent implements OnInit, OnDestroy {
   get otpCode(): string { return this.digits.join(''); }
 
   ngOnInit(): void {
-    this.logger.devInfo(CTX, 'OTP modal opened', { phone: this.phone });
-    this.logger.userAction('OTP', 'OTP modal displayed', { phone: this.phone });
+    this.logger.devInfo(CTX, 'OTP modal initialized');
+    this.auth.sendOtp({ phone: this.phone }).catch(() => {
+      this.hasError = true;
+      this.errorMessage = 'Failed to send OTP.';
+    });
     this.startCountdown();
   }
 
@@ -68,7 +71,7 @@ export class OtpModalComponent implements OnInit, OnDestroy {
   onPaste(event: ClipboardEvent): void {
     const text = event.clipboardData?.getData('text') ?? '';
     const nums = text.replace(/\D/g, '').slice(0, 5).split('');
-    nums.forEach((n, i) => { this.digits[i] = n; });
+    nums.forEach((digit, index) => { this.digits[index] = digit; });
     event.preventDefault();
     const nextEmpty = this.digits.findIndex(d => !d);
     const focusIdx  = nextEmpty === -1 ? 4 : nextEmpty;
@@ -85,6 +88,7 @@ export class OtpModalComponent implements OnInit, OnDestroy {
     this.successMessage = '';
 
     try {
+      this.logger.devInfo(CTX, 'Verifying OTP', { phone: this.phone, code: this.otpCode });  
       await this.auth.verifyOtp({ phone: this.phone, code: this.otpCode });
       this.auth.saveSession(this.phone);
       this.successMessage = '✓ Verified! Redirecting...';

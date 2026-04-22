@@ -50,7 +50,12 @@ export class RegisterComponent {
 
     this.loading  = true;
     this.apiError = '';
-    this.logger.userAction('Register', 'Register form submitted', { phone: this.form.phone, role: this.form.role });
+
+    this.logger.userAction('Register', 'Register form submitted', { 
+     
+      phone: this.form.phone, 
+      role: this.form.role
+     });
 
     try {
       await this.auth.register({
@@ -59,8 +64,14 @@ export class RegisterComponent {
         email:    this.form.email.trim(),
         role:     this.form.role
       });
+
+      await this.auth.sendOtp({ phone: this.form.phone });
+
       this.logger.userAction('Register', 'Registration success — triggering OTP');
+
+      this.logger.devInfo(CTX, 'OTP sent after registration'); 
       this.showOtp = true;
+
     } catch (err: any) {
       const msg = err?.error?.message || 'Registration failed. Please try again.';
       this.apiError = msg;

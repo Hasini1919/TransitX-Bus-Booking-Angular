@@ -79,6 +79,7 @@ export class AuthService {
     this.logger.userAction('OTP', 'User submitting OTP code');
 
     try {
+      this.logger.devInfo(CTX, 'Attempting to verify OTP', { phone: payload.phone, code: payload.code });
       const res = await firstValueFrom(
         this.http.post<ApiResponse>(`${this.base}/verify`, payload)
       );

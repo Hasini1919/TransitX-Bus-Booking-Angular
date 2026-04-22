@@ -41,8 +41,9 @@ export class LoginComponent {
 
     try {
       await this.auth.login({ phone: this.phone });
-      this.showOtp = true;
-      this.logger.userAction('Login', 'OTP modal triggered after login');
+      await this.auth.sendOtp({ phone: this.phone });
+      this.logger.devInfo(CTX, 'OTP sent successfully'); this.showOtp = true;
+
     } catch (err: any) {
       const msg = err?.error?.message || 'Phone number not registered. Please sign up.';
       this.apiError = msg;
