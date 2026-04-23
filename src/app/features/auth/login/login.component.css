@@ -170,3 +170,21 @@ input::placeholder { color: #c4b0a0; }
   .panel-copy h1 { font-size: 2.2rem; }
   .right-panel { padding: 32px 24px; }
 }
+
+.toast {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 16px; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 500;
+  margin-bottom: 16px;
+  animation: slideIn 0.3s ease;
+}
+.toast-success { background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; }
+.toast-error   { background: #fff0f0; border: 1.5px solid #fca5a5; color: #991b1b; }
+.toast-icon {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+}
+.toast-success .toast-icon { background: #bbf7d0; color: #166534; }
+.toast-error   .toast-icon { background: #fecaca; color: #991b1b; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }

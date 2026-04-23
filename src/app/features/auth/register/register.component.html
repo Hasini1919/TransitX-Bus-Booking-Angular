@@ -115,7 +115,10 @@
         <p class="field-error" *ngIf="errors['role']">{{ errors['role'] }}</p>
       </div>
 
-      <p class="api-error" *ngIf="apiError">{{ apiError }}</p>
+      <div class="toast" *ngIf="toast.type" [class.toast-success]="toast.type === 'success'" [class.toast-error]="toast.type === 'error'">
+        <span class="toast-icon">{{ toast.type === 'success' ? '✓' : '✕' }}</span>
+        {{ toast.message }}
+      </div>
 
       <button
         class="btn-primary"

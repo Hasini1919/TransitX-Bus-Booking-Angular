@@ -44,6 +44,7 @@ export class AuthService {
       const res = await firstValueFrom(
         this.http.post<ApiResponse>(`${this.base}/login`, payload)
       );
+      localStorage.setItem('jwtToken', (res as { token: string }).token);
       this.logger.devInfo(CTX, 'login() success', res);
       this.logger.userAction('Login', 'Login API success — OTP should be sent');
       return res;

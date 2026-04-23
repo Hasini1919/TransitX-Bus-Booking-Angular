@@ -37,10 +37,6 @@ export class OtpModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.logger.devInfo(CTX, 'OTP modal initialized');
-    this.auth.sendOtp({ phone: this.phone }).catch(() => {
-      this.hasError = true;
-      this.errorMessage = 'Failed to send OTP.';
-    });
     this.startCountdown();
   }
 
@@ -94,7 +90,8 @@ export class OtpModalComponent implements OnInit, OnDestroy {
       this.successMessage = '✓ Verified! Redirecting...';
       this.logger.userAction('OTP', 'OTP verified — session saved', { phone: this.phone });
 
-      setTimeout(() => { this.verified.emit(); }, 800);
+      setTimeout(() => { this.successMessage = 'OTP verified successfully!';
+        this.verified.emit(); }, 800);
     } catch (err: any) {
       this.hasError     = true;
       this.errorMessage = err?.error?.message || 'Invalid OTP. Please try again.';
