@@ -1,75 +1,53 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ========================
+# Angular build output
+# ========================
+dist/
+out-tsc/
+tmp/
+bazel-out/
+.angular/cache/
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
+# ========================
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# ========================
+node_modules/
+npm-debug.log*
+yarn-error.log*
 
-# IDEs and editors
+# ========================
+# Firebase
+# ========================
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# ========================
+# Environment files (IMPORTANT)
+# ========================
+src/environments/environment*.local.ts
+
+# ========================
+# IDEs
+# ========================
+.vscode/
 .idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
 *.sublime-workspace
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-.history/*
+# ========================
+# OS files
+# ========================
+.DS_Store
+Thumbs.db
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+# ========================
+# Coverage / testing
+# ========================
+coverage/
 testem.log
-/typings
+
+# ========================
+# Angular optional caches
+# ========================
+/connect.lock
+/typings/
 __screenshots__/
-
-# System files
-.DS_Store
-Thumbs.db
-
-
-# Angular build output
-/dist
-/tmp
-/out-tsc
-
-# Node modules
-/node_modules
-
-# Compiled JavaScript
-/*.js
-/*.js.map
-/*.jsbundle
-
-# Compiled CSS
-/*.css
-/*.css.map
-
-# Environment files (if you want to keep API keys secret)
-src/environments/environment*.ts
-
-# IDEs and editors
-/.vscode/
-/.idea/
-/*.sublime-project
-/*.sublime-workspace
-
-# System files
-.DS_Store
-Thumbs.db
